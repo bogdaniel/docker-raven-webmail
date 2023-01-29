@@ -21,6 +21,8 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
+      env: 
+        DOCKER_BUILDKIT: 1
       run: docker build . --file Dockerfile --tag zenchron/raven-webmail:$(date +%s)
     
     - name: Docker Push
