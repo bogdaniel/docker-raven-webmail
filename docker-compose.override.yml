@@ -1,0 +1,21 @@
+version: "3.8"
+
+# Development environment override
+services:
+  raven-ui:
+    build:
+      target: app
+#    volumes:
+#      - ./:/srv/app
+#      - ./docker/php/conf.d/app.dev.ini:/usr/local/etc/php/conf.d/app.dev.ini:ro
+#      # If you develop on Mac or Windows you can remove the vendor/ directory
+#      #  from the bind-mount for better performance by enabling the next line:
+#      #- /srv/app/vendor
+    extra_hosts:
+      # Ensure that host.docker.internal is correctly defined on Linux
+      - host.docker.internal:host-gateway
+    ports:
+      # HTTP
+      - target: 9090
+        published: 9090
+        protocol: tcp

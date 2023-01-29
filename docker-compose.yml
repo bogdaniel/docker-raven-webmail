@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  raven-ui:
+    build:
+      context: .
+      target: app
+    #command: tail -f /dev/null
+    environment:
+      RAVEN_PORT: 9090
+      RAVEN_SSL: false
+      RAVEN_SSL_CERTIFICATE: ""
+      RAVEN_SSL_CERTIFICATE_KEY: ""
+      RAVEN_SECRET_KEY: "some super secret value"
+      RAVEN_MONGO_DB_URL: "asdasdasd"
+      RAVEN_WILDDUCK_API_URL: "http://localhost:8080"
+      RAVEN_WILDDUCK_API_TOKEN: "same as in wildduck config"
+      RAVEN_COMPRESSION: false
+    restart: unless-stopped
+#    volumes:
+#      - php_socket:/var/run/php
+    ports:
+      # HTTP
+      - target: 8635
+        published: ${HTTP_PORT:-8635}
+        protocol: tcp
+volumes:
+  php_socket:
