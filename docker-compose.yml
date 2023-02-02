@@ -12,7 +12,7 @@ services:
       RAVEN_SSL_CERTIFICATE: ""
       RAVEN_SSL_CERTIFICATE_KEY: ""
       RAVEN_SECRET_KEY: "some super secret value"
-      RAVEN_MONGO_DB_URL: "asdasdasd"
+      RAVEN_MONGO_DB_URL: "mongodb://localhost:27017/raven-webmail"
       RAVEN_WILDDUCK_API_URL: "http://localhost:8080"
       RAVEN_WILDDUCK_API_TOKEN: "same as in wildduck config"
       RAVEN_COMPRESSION: false
