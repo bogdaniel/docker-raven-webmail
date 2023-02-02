@@ -34,7 +34,7 @@ jobs:
     - name: Build the Docker image
       env: 
         DOCKER_BUILDKIT: 1
-      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ needs.job1.outputs.current_date }}
+      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ needs.outputs.current_date }}
       
     - name: Docker Push
-      run: docker push $DOCKER_USER/$REPO_NAME:${{ needs.job1.outputs.current_date }}
+      run: docker push $DOCKER_USER/$REPO_NAME:${{ needs.outputs.current_date }}
