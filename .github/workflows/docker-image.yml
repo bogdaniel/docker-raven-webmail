@@ -26,4 +26,4 @@ jobs:
       run: docker build . --file Dockerfile --tag zenchron/raven-webmail:$(date +%s)
     
     - name: Docker Push
-      run: docker push ${{secrets.DOCKER_USER}}/zenchron/raven-webmail
+      run: docker push ${{secrets.DOCKER_USER}}/raven-webmail
