@@ -21,5 +21,5 @@ if [ ! -f config.toml ]; then
 
 fi
 
-exec node raven.js start
+exec "$@"
 
