@@ -37,4 +37,4 @@ jobs:
       run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ needs.job1.outputs.current_date }}
       
     - name: Docker Push
-      run: docker push $DOCKER_USER/$REPO_NAME:${{ needs.job1.outputs.current_date }
+      run: docker push $DOCKER_USER/$REPO_NAME:${{ needs.job1.outputs.current_date }}
