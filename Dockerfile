@@ -36,7 +36,6 @@ RUN cd app && npm i
 RUN cd ..
 RUN npm i
 RUN npm run build
-RUN node raven create-config
 
 
 FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} as app
