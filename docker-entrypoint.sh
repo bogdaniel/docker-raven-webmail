@@ -14,7 +14,7 @@ if [ ! -f config.toml ]; then
 		sed -i'.bak' "s|# ssl_certificate_key=\"/path/to/ssl/key.pem\"|ssl_certificate_key=\"$RAVEN_SSL_CERTIFICATE_KEY\"|" config.toml;
 	fi
 	sed -i'.bak' "s|secret_token=\"some super secret value\"|secret_token=\"$RAVEN_SECRET_TOKEN\"|" config.toml;
-	sed -i'.bak' "s|mongodb_url=\"mongodb://localhost:27017/raven-webmail\"|mongodb_url=\"mongodb://asdasdasdasd/raven-webmail\"|" config.toml;
+	sed -i'.bak' "s|mongodb_url=\"mongodb://localhost:27017/raven-webmail\"|mongodb_url=\"$RAVEN_MONGO_DB_URL\"|" config.toml;
 	sed -i'.bak' "s|wildduck_api_url=\"http://localhost:8080\"|wildduck_api_url=\"$RAVEN_WILDDUCK_API_URL\"|" config.toml;
 	sed -i'.bak' "s|wildduck_api_token=\"same as in wildduck config\"|wildduck_api_token=\"$RAVEN_WILDDUCK_API_TOKEN\"|" config.toml;
 	sed -i'.bak' "s|compression=false|compression=$RAVEN_COMPRESSION|" config.toml;
