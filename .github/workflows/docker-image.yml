@@ -9,7 +9,6 @@ env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
   REPO_NAME: ${{secrets.REPO_NAME}}
-  GITHUB_STATE: ''
 
 jobs:
 
@@ -28,12 +27,12 @@ jobs:
         
     - name: Get current date # get the date of the build
       id: date
-      run: echo "name=date::$(date +'%Y-%m-%d--%M-%S')" >> $GITHUB_STATE
+      run: echo "name=date::$(date +'%Y-%m-%d--%M-%S')" >> $GITHUB_OUTPUT
 
     - name: Build the Docker image
       env: 
         DOCKER_BUILDKIT: 1
-      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:$GITHUB_STATE
+      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:$GITHUB_OUTPUT
       
     - name: Docker Push
-      run: docker push $DOCKER_USER/$REPO_NAME:$GITHUB_STATE
+      run: docker push $DOCKER_USER/$REPO_NAME:$GITHUB_OUTPUT
