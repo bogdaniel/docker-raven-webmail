@@ -9,6 +9,7 @@ env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
   REPO_NAME: ${{secrets.REPO_NAME}}
+  
 
 jobs:
 
@@ -32,7 +33,7 @@ jobs:
     - name: Build the Docker image
       env: 
         DOCKER_BUILDKIT: 1
-      run: docker build . --file Dockerfile --tag $DOCKER_USER/REPO_NAME:${{ steps.date.outputs.date }}
+      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
       
     - name: Docker Push
       run: docker push $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
