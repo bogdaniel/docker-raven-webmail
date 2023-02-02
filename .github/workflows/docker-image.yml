@@ -16,8 +16,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    outputs:
-      current_date: ${{ steps.date.outputs.current_date }}
+    
     steps:
     - uses: actions/checkout@v3
     - name: docker login
@@ -34,7 +33,7 @@ jobs:
     - name: Build the Docker image
       env: 
         DOCKER_BUILDKIT: 1
-      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ needs.outputs.current_date }}
+      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ env.current_date }}
       
     - name: Docker Push
-      run: docker push $DOCKER_USER/$REPO_NAME:${{ needs.outputs.current_date }}
+      run: docker push $DOCKER_USER/$REPO_NAME:${{ env.current_date }}
