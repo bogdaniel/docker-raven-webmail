@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 set -e
 
+rm -rf config.toml
 if [ ! -f config.toml ]; then
 
 	# create default config file in ./config.toml
