@@ -23,7 +23,7 @@ jobs:
     - name: Build the Docker image
       env: 
         DOCKER_BUILDKIT: 1
-      run: docker build . --file Dockerfile --tag zenchron/raven-webmail:$(date +%s)
+      run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/raven-webmail:$(date +%s)
     
     - name: Docker Push
       run: docker push ${{secrets.DOCKER_USER}}/raven-webmail
