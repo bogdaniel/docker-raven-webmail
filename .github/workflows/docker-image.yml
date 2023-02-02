@@ -9,7 +9,7 @@ env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
   REPO_NAME: ${{secrets.REPO_NAME}}
-  CURRENT_DATE: $(date +'%Y-%m-%d--%M-%S')
+  CURRENT_DATE: ''
 
 jobs:
 
@@ -28,12 +28,12 @@ jobs:
         
     - name: Get current date # get the date of the build
       id: date
-      run: echo "CURRENT_DATE=$(date +'%Y-%m-%d--%M-%S')" >> $GITHUB_OUTPUT
+      run: echo "CURRENT_DATE=$(date +'%Y-%m-%d--%M-%S')" >> $GITHUB_ENV
 
     - name: Build the Docker image
       env: 
         DOCKER_BUILDKIT: 1
-      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ env.CURRENT_DATE }}
+      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:$CURRENT_DATE
       
     - name: Docker Push
-      run: docker push $DOCKER_USER/$REPO_NAME:${{ env.CURRENT_DATE }}
+      run: docker push $DOCKER_USER/$REPO_NAME:$CURRENT_DATE
