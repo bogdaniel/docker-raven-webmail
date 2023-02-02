@@ -26,7 +26,7 @@ jobs:
       run: docker build . --file Dockerfile
       
     - name: Tag the Docker Image
-      run: docker tag ${{secrets.DOCKER_USER}}/raven-webmail:$(date +%s)
-      
+      run: docker tag ${{secrets.DOCKER_USER}}/raven-webmail:latest ${{secrets.DOCKER_USER}}/raven-webmail:$(date +%s)
+     
     - name: Docker Push
       run: docker push ${{secrets.DOCKER_USER}}/raven-webmail
